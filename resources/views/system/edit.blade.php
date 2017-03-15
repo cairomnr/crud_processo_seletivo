@@ -36,7 +36,7 @@
             </div>
             <div class="form-group">
                 <label for="email_support" class="col-xs-2 col-xs-offset-2 control-label">
-                    Email de Atendimento do sistema
+                    Email de atendimento do sistema
                 </label>
                 <div class="col-xs-6">
                     <input type="text" class="form-control" name="email_support" id="email_support" value="{{ $system->email_support }}" maxlength="100">

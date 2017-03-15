@@ -15,9 +15,8 @@ class SystemController extends Controller
 
 	public function index()
 	{
-		return view('system.list')
-					->with('systems', [])
-					->with('action', 0);
+		return view('system.search')
+					->with('systems', []);
 	}
 
 	public function search(Request $request) 
@@ -39,8 +38,7 @@ class SystemController extends Controller
 		$systems = System::where($where)->limit(5)->orderBy('id', 'desc')->paginate(1);
 
 		return view('system.list')
-				->with('systems', $systems)
-				->with('action', 1);
+				->with('systems', $systems);
 	}
 
 	public function create()
