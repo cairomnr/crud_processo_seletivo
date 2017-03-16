@@ -21,7 +21,7 @@
                     <span class="required">*</span>
                 </label>
                 <div class="col-xs-6">
-                    <input type="text" class="form-control" name="description" id="description" maxlength="100" >
+                    <input type="text" class="form-control" name="description" id="description" value="{{ old('description') }}" maxlength="100" >
                 </div>
             </div>
             <div class="form-group">
@@ -30,7 +30,7 @@
                     <span class="required">*</span>
                 </label>
                 <div class="col-xs-6">
-                    <input type="text" class="form-control" name="initials" id="initials" maxlength="10">
+                    <input type="text" class="form-control" name="initials" id="initials" value="{{ old('initials') }}" maxlength="10">
                 </div>
             </div>
             <div class="form-group">
@@ -38,7 +38,7 @@
                     Email de Atendimento do sistema
                 </label>
                 <div class="col-xs-6">
-                    <input type="text" class="form-control" name="email_support" id="email_support" maxlength="100">
+                    <input type="text" class="form-control" name="email_support" id="email_support" value="{{ old('email_support') }}" maxlength="100">
                 </div>
             </div>
             <div class="form-group">
@@ -46,7 +46,7 @@
                     URL
                 </label>
                 <div class="col-xs-6">
-                    <input type="text" class="form-control" name="url" id="url" maxlength="50" >
+                    <input type="text" class="form-control" name="url" id="url" value="{{ old('url') }}" maxlength="50" >
                 </div>
             </div>
         </div>

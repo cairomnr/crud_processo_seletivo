@@ -40,6 +40,7 @@ return [
     // 'distinct'             => 'The :attribute field has a duplicate value.',
 
     'email'                => 'E-mail inválido.',
+    'rn_email'             => 'E-mail inválido.',
 
     // 'exists'               => 'The selected :attribute is invalid.',
     // 'file'                 => 'The :attribute must be a file.',

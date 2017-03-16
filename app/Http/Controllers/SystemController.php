@@ -6,7 +6,8 @@ use Illuminate\Http\Request;
 
 use DB;
 use App\System;
-use App\Http\Requests\RequestSystem;
+use App\Http\Requests\SystemRequest;
+use App\Http\Requests\SearchSystemRequest;
 
 class SystemController extends Controller
 {
@@ -15,27 +16,14 @@ class SystemController extends Controller
 
 	public function index()
 	{
-		return view('system.search')
-					->with('systems', []);
+		return view('system.search');
 	}
 
-	public function search(Request $request) 
+	public function search(SearchSystemRequest $request) 
 	{
-		/* Ver onde eu coloco esse código */
-		$description = $request->input('description');
-		$initials = $request->input('initials');
-		$email_support = $request->input('email_support');
-
-		$where = [];
-
-		if($description != null)
-			array_push($where, ['description', 'like', '%'.$description.'%']);
-		if($initials != null)
-			array_push($where, ['initials', 'like', '%'.$initials.'%']);
-		if($email_support != null)
-			array_push($where, ['email_support', 'like', '%'.$email_support.'%']);
-
-		$systems = System::where($where)->limit(5)->orderBy('id', 'desc')->paginate(1);
+		$systems = System::where($this->whereLike($request->all()))
+						->orderBy('id', 'desc')
+						->paginate(10);
 
 		return view('system.list')
 				->with('systems', $systems);
@@ -46,7 +34,7 @@ class SystemController extends Controller
 		return view('system.create');
 	}
 
-	public function store(RequestSystem $request)
+	public function store(SystemRequest $request)
 	{
 		System::create($request->all());
 
@@ -60,11 +48,21 @@ class SystemController extends Controller
 				->with('user', $system->user);
 	}
 
-	public function update(RequestSystem $request, System $system)
+	public function update(SystemRequest $request, System $system)
 	{
 		$system->update($request->all());
 		
 		return redirect('/system')->with('success', trans('miscellany.success'));
 	}
 
+	private function whereLike(array $parameters, array $where = [])
+	{
+		foreach($parameters as $field => $parameter)
+		{
+			if($parameter != null && $field != "page")
+				array_push($where, [$field, 'like', '%'.$parameter.'%']);
+		}
+
+		return $where;
+	}
 }

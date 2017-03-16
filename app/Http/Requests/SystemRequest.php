@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class RequestSystem extends FormRequest
+class SystemRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,20 +23,21 @@ class RequestSystem extends FormRequest
      */
     public function rules()
     {
-        $validation_email = '';
-        $validation_justification_update = '';
-
-        if($this->exists('justification_update'))
-            $validation_justification_update = 'required';
-
-        if($this->has('email_support'))
-            $validation_email = 'email';
-
         return [
             'description' => 'required',
             'initials' => 'required',
-            'email_support' => $validation_email,
-            'justification_update' => $validation_justification_update
+            'email_support' => $this->validationEmail(),
+            'justification_update' => $this->validationJustUpdate()
         ];
+    }
+
+    public function validationEmail()
+    {
+        return ($this->has('email_support')) ? 'rn_email' : '';
+    }
+
+    public function validationJustUpdate()
+    {
+        return ($this->exists('justification_update')) ? 'required' : '';
     }
 }

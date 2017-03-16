@@ -9,19 +9,19 @@
             <div class="form-group">
                 <label for="description" class="col-xs-2 col-xs-offset-2 control-label">Descrição: </label>
                 <div class="col-xs-6">
-                    <input type="text" class="form-control" name="description" id="description" maxlength="100" >
+                    <input type="text" class="form-control" name="description" id="description" value="{{ old('description') }}" maxlength="100" >
                 </div>
             </div>
             <div class="form-group">
                 <label for="initials" class="col-xs-2 col-xs-offset-2 control-label">Sigla: </label>
                 <div class="col-xs-6">
-                    <input type="text" class="form-control" name="initials" id="initials" maxlength="10">
+                    <input type="text" class="form-control" name="initials" id="initials" value="{{ old('initials') }}" maxlength="10">
                 </div>
             </div>
             <div class="form-group">
                 <label for="email_support" class="col-xs-2 col-xs-offset-2 control-label">Email de atendimento do sistema: </label>
                 <div class="col-xs-6">
-                    <input type="email" class="form-control" name="email_support" id="email_support" maxlength="100">
+                    <input type="text" class="form-control" name="email_support" id="email_support" value="{{ old('email_support') }}" maxlength="100">
                 </div>
             </div>
         </div>

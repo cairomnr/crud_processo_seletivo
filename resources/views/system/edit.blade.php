@@ -102,14 +102,14 @@
         <div class="panel-footer">
             <div class="row">
                 <div class="col-xs-4 col-xs-offset-2">
-                    <a href="{{ url('system') }}" class="btn btn-danger">
+                    <a href="{{ url('system') }}" class="btn btn-default">
                         Voltar
                     </a>
                 </div>
                 
 
                 <div class="col-xs-4">
-                    <button type="submit" class="btn btn-success pull-right">
+                    <button type="submit" class="btn btn-default pull-right">
                         Salvar
                         <i class="fa fa-plus" aria-hidden="true"></i>
                     </button>

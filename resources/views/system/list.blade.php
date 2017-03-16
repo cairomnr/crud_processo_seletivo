@@ -4,6 +4,7 @@
 
 @section('content')
 
+@include('partials.alerts.errors')
 @include('partials.alerts.success')
 @include('partials.searchs.system')
 
